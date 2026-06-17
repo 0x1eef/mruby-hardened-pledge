@@ -2,12 +2,11 @@
 
 mruby-hardened-pledge provides mruby bindings for
 HardenedBSD's pledge feature &ndash; which is inspired
-by and based on OpenBSD's pledge feature.
-
-For the time being the library does nothing more than
-bridge `pledge_string` from libpledge as `Kernel#pledge`
-in mruby, and it is implemented as 22 lines of simple C
-code. I might build abstractions on top of it later.
+by and based on OpenBSD's pledge feature. For the time being
+the library does nothing more than bridge `pledge_string`
+from libpledge as `Kernel#pledge` in mruby, and it is
+implemented as 22 lines of simple C code. I might build
+abstractions on top of it later.
 
 ## Quick start
 
@@ -45,7 +44,6 @@ that has a label:
 
 | Pledge String | C Constant |
 |---|---|
-
 | `rpath` | `PLEDGE_RPATH` |
 | `wpath` | `PLEDGE_WPATH` |
 | `cpath` | `PLEDGE_CPATH` |
@@ -87,7 +85,7 @@ that has a label:
 | `sysctl` | `PLEDGE_SYSCTL` |
 | `ioctl` | `PLEDGE_IOCTL` |
 | `capsicum` | `PLEDGE_CAPSICUM` |
-| `none` | `PLEDGE_NONE` |
+| `none` | `PLEDGE_NONE` |'
 
 ## License
 
