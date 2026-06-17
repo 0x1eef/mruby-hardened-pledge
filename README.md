@@ -90,4 +90,4 @@ that has a label:
 ## License
 
 0BSD. <br>
-See [LICENSE].
+See [LICENSE](./LICENSE).
