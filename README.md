@@ -15,7 +15,7 @@ abstractions on top of it later.
 ```ruby
 ##
 # Allow DNS. Fail with errno.
-pledge("dns softfail")
+pledge("inet", "wildcard")
 
 ##
 # Raises SystemCallError
