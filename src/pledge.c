@@ -8,7 +8,7 @@ mrb_pledge(mrb_state *mrb, mrb_value self)
   const char *pledges, *execpledges;
   mrb_get_args(mrb, "zz", &pledges, &execpledges);
   pledge_string(pledges, execpledges);
-  return mrb_value_nil();
+  return mrb_nil_value();
 }
 
 void
