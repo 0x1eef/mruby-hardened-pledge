@@ -1,14 +1,31 @@
 #include <mruby.h>
+
+#ifdef defined(__FreeBSD__)
 #include <pledge.h>
-#include <sys/pledge.h>
+#endif
+
+#ifdef defined(__OpenBSD__)
+#include <unistd.h>
+#endif
 
 static mrb_value
 mrb_pledge(mrb_state *mrb, mrb_value self)
 {
   const char *pledges, *execpledges;
-  mrb_get_args(mrb, "zz", &pledges, &execpledges);
-  pledge_string(pledges, execpledges);
-  return mrb_nil_value();
+  int error;
+  mrb_get_args(mrb, "zz!", &pledges, &execpledges);
+
+#ifdef defined(__FreeBSD__)
+  if (execpledges == NULL)
+    execpledges = "inherit";
+  error = pledge_string(pledges, execpledges);
+#endif
+
+#ifdef defined(__OpenBSD__)
+  error = pledge(pledges, execpledges);
+#endif
+
+  return mrb_fixnum_value(error);
 }
 
 void
