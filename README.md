@@ -1,5 +1,5 @@
 <p align="center">
-<img src="4.4bsd.svg">
+<img width=400 height=250 src="4.4bsd.svg">
 </p>
 
 mruby-hardened-pledge provides mruby bindings for the
