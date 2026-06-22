@@ -1,10 +1,10 @@
 #include <mruby.h>
 
-#ifdef defined(__FreeBSD__)
+#ifdef __FreeBSD__
 #include <pledge.h>
 #endif
 
-#ifdef defined(__OpenBSD__)
+#ifdef __OpenBSD__
 #include <unistd.h>
 #endif
 
@@ -15,13 +15,13 @@ mrb_pledge(mrb_state *mrb, mrb_value self)
   int error;
   mrb_get_args(mrb, "zz!", &pledges, &execpledges);
 
-#ifdef defined(__FreeBSD__)
+#ifdef __FreeBSD__
   if (execpledges == NULL)
     execpledges = "inherit";
   error = pledge_string(pledges, execpledges);
 #endif
 
-#ifdef defined(__OpenBSD__)
+#ifdef __OpenBSD__
   error = pledge(pledges, execpledges);
 #endif
 
